@@ -1,0 +1,25 @@
+.menu-bar {
+  display: flex;
+  padding: 1em;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+.menu-bar .brands {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.menu-bar .brands a {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.menu-bar .links {
+  flex-grow: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

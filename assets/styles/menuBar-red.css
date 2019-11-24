@@ -1,0 +1,20 @@
+@import "menuBar.css";
+
+.menu-bar {
+  background-color: red;
+}
+
+.menu-bar a,
+.menu-bar a:visited,
+.menu-bar a:active {
+  text-decoration: none;
+  color: orange;
+}
+
+.menu-bar .brands a.red {
+  display: none;
+}
+
+.menu-bar .brands a.blue {
+  background-color: teal;
+}
