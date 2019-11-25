@@ -32,11 +32,12 @@ module.exports = (env = {}) => ({
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: 'file-loader',
             options: {
-              injectType: 'lazySingletonStyleTag',
+              name: '[name].[contenthash].css',
             },
           },
+          'extract-loader',
           {
             loader: 'css-loader',
             options: { importLoaders: 1 },

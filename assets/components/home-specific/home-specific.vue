@@ -5,10 +5,15 @@
 </template>
 
 <script>
-import LazyStyleLoader from '../../mixins/lazy-style-loader.vue';
-
 export default {
   name: 'homeSpecific',
-  mixins: [LazyStyleLoader],
+  props: {
+    brand: String,
+  },
+  mounted() {
+    import(`./${this.brand}.css`).then(() => {
+      this.ready = true;
+    });
+  }
 };
 </script>
