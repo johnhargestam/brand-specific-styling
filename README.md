@@ -10,4 +10,5 @@ This example uses a mixin with a common style folder, but that is an optional ap
 * Using the vue lifecycle to load style on-demand is very handy for asynchronous vue components.
 
 ## Issues
-* There is quite some boilerplate necessary to allow each component to resolve the correct style at runtime and delay its rendering.
+* The client cannot load the css before all scripts have been loaded and resolved.
+* There is quite some boilerplate within the components to allow them to resolve the correct style at runtime.
