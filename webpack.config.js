@@ -34,7 +34,7 @@ module.exports = {
           {
             loader: 'style-loader',
             options: {
-              injectType: 'lazyStyleTag',
+              injectType: 'lazySingletonStyleTag',
             },
           },
           'css-loader'],
