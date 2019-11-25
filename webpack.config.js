@@ -3,15 +3,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const { VueLoaderPlugin } = require('vue-loader');
 
-module.exports = {
-  mode: 'development',
+module.exports = (env = {}) => ({
+  mode: env.production ? 'production' : 'development',
   entry: {
     home: path.resolve(__dirname, 'assets/views/home/'),
     shop: path.resolve(__dirname, 'assets/views/shop/'),
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].[contenthash].js',
+    filename: env.production ? '[id].[contenthash].js' : '[name].[contenthash].js',
     publicPath: '/',
   },
   resolve: {
@@ -37,7 +37,18 @@ module.exports = {
               injectType: 'lazySingletonStyleTag',
             },
           },
-          'css-loader'],
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 },
+          },
+        ].concat(env.production ? [{
+          loader: 'postcss-loader',
+          options: {
+            config: {
+              path: path.join(__dirname, '/postcss.config.js'),
+            },
+          },
+        }] : []),
       },
       {
         test: /\.vue$/,
@@ -45,4 +56,4 @@ module.exports = {
       },
     ],
   },
-};
+});

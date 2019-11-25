@@ -2,7 +2,8 @@
   "name": "brand-specific-styling",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack",
+    "dev": "webpack",
+    "build": "webpack --env.production",
     "serve": "node server/main.js",
     "eslint": "eslint ./**/*",
     "stylelint": "stylelint ./**/*.css",
@@ -29,9 +30,13 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "cssnano": "^4.1.10",
     "express": "^4.17.1",
     "express-manifest-helpers": "^0.6.0",
     "morgan": "^1.9.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "twig": "^1.14.0",
     "vue": "^2.6.10"
   }
