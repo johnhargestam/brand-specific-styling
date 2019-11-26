@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require('morgan');
-const { join } = require('path');
 const fs = require('fs');
 
 const app = express();
@@ -16,7 +15,7 @@ function getBrand(req) {
 app.use(morgan('combined'));
 app.use(express.static('build'));
 
-app.set('views', join(__dirname, '../templates'));
+app.set('views', 'templates');
 
 app.get('/', (req, res) => {
   res.render('index.twig', {
