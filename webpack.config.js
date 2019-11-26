@@ -57,4 +57,36 @@ module.exports = (env = {}) => ({
       },
     ],
   },
+  /*
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        homeBlue: {
+          name: 'home-blue',
+          test: /blue\.css$/,
+          chunks: (chunk) => chunk.name === 'home',
+          enforce: true,
+        },
+        homeRed: {
+          name: 'home-red',
+          test: /red\.css$/,
+          chunks: (chunk) => chunk.name === 'home',
+          enforce: true,
+        },
+        shopBlue: {
+          name: 'shop-blue',
+          test: /blue\.css$/,
+          chunks: (chunk) => chunk.name === 'shop',
+          enforce: true,
+        },
+        shopRed: {
+          name: 'shop-red',
+          test: /red\.css$/,
+          chunks: (chunk) => chunk.name === 'shop',
+          enforce: true,
+        },
+      },
+    },
+  },
+  */
 });

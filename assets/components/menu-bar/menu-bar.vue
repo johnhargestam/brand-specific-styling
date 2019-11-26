@@ -1,5 +1,5 @@
 <template >
-  <div v-if="this.ready" class="menu-bar">
+  <div class="menu-bar">
     <div class="brands">
       <a class="blue" href="/?brand=blue"></a>
       <a class="red" href="/?brand=red"></a>
@@ -8,20 +8,25 @@
       <a :href="`/?brand=${brand}`">home</a>
       <a :href="`/shop?brand=${brand}`">shop</a>
     </div>
+    <link rel="stylesheet" text="text/css" :href="assets[`menu-${this.brand}.css`]">
   </div>
 </template>
 
 <script>
+import './menu-red.css';
+import './menu-blue.css';
 
 export default {
   name: 'menuBar',
   props: {
-    brand: String,
+    brand: {
+      type: String,
+      required: true,
+    },
+    assets: {
+      type: Object,
+      required: true,
+    },
   },
-  mounted() {
-    import(`./${this.brand}.css`).then(() => {
-      this.ready = true;
-    });
-  }
 };
 </script>

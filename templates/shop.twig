@@ -1,4 +1,5 @@
 <shop
   brand="{{ brand }}"
+  :assets='{{ manifest | json_encode }}'
 ></shop>
-<script src="{{ assetPath('shop.js') }}"></script>
+<script src="{{ attribute(manifest, 'shop.js') }}"></script>

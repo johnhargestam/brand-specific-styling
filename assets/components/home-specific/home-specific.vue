@@ -1,19 +1,25 @@
 <template>
-  <div v-if="this.ready" class="home-specific">
+  <div class="home-specific">
     <p>Welcome home!</p>
+    <link rel="stylesheet" text="text/css" :href="assets[`home-${this.brand}.css`]">
   </div>
 </template>
 
 <script>
+import './home-red.css';
+import './home-blue.css';
+
 export default {
   name: 'homeSpecific',
   props: {
-    brand: String,
+    brand: {
+      type: String,
+      required: true,
+    },
+    assets: {
+      type: Object,
+      required: true,
+    },
   },
-  mounted() {
-    import(`./${this.brand}.css`).then(() => {
-      this.ready = true;
-    });
-  }
 };
 </script>

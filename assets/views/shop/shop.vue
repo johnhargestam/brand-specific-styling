@@ -2,9 +2,11 @@
   <main>
     <menu-bar
       :brand="brand"
+      :assets="assets"
     />
     <shop-specific
       :brand="brand"
+      :assets="assets"
     />
   </main>
 </template>
@@ -22,6 +24,10 @@ export default {
   props: {
     brand: {
       type: String,
+      required: true,
+    },
+    assets: {
+      type: Object,
       required: true,
     },
   },

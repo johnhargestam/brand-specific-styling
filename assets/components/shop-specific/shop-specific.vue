@@ -1,17 +1,28 @@
 <template>
-  <ul v-if="this.ready"><li>stuff</li><li>things</li><li>junk</li></ul>
+  <div>
+    <ul>
+      <li>stuff</li>
+      <li>things</li
+      ><li>junk</li>
+    </ul>
+    <link rel="stylesheet" text="text/css" :href="assets[`shop-${this.brand}.css`]">
+  </div>
 </template>
 <script>
+import './shop-red.css';
+import './shop-blue.css';
 
 export default {
   name: 'shopSpecific',
   props: {
-    brand: String,
+    brand: {
+      type: String,
+      required: true,
+    },
+    assets: {
+      type: Object,
+      required: true,
+    },
   },
-  mounted() {
-    import(`./${this.brand}.css`).then(() => {
-      this.ready = true;
-    });
-  }
 };
 </script>
