@@ -1,5 +1,7 @@
 # Brand & Component Specific Styling with style-loader
 
+**This is not an actively pursued approach**
+
 This is an approach using `style-loader` to dynamically load the minimal needed styles at runtime. It can easily be extended to use more parameters (like platform) by passing more props to resolve the correct style file.
 
 This example uses a mixin with a common style folder, but that is an optional approach used to reduce code duplication.
@@ -11,3 +13,4 @@ This example uses a mixin with a common style folder, but that is an optional ap
 
 ## Issues
 * There is quite some boilerplate necessary to allow each component to resolve the correct style at runtime and delay its rendering.
+* Style can only be loaded in style-tags, making it an unsuitable option for any twig optimizations.
