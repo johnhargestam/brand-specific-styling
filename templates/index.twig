@@ -3,3 +3,8 @@
   :assets='{{ manifest | json_encode }}'
 ></home>
 <script src="{{ attribute(manifest, 'home.js') }}"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ attribute(manifest, 'index-' ~ brand ~ '.css') }}"
+>
