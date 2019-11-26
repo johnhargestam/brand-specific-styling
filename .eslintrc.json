@@ -20,8 +20,5 @@
       }
     }
   ],
-  "parserOptions": {
-    "parser": "babel-eslint"
-  },
   "plugins": ["json", "es"]
 }

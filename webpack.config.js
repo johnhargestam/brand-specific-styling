@@ -11,7 +11,7 @@ module.exports = (env = {}) => ({
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: env.production ? '[id].[contenthash].js' : '[name].[contenthash].js',
+    filename: '[name].[contenthash].js',
     publicPath: '/',
   },
   resolve: {
