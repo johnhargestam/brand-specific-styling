@@ -29,9 +29,9 @@ platforms.forEach(platform => {
 ```
 npm install
 ```
-Serve to http://localhost:8081/ (port can be changed in server/main.js)
+Serve to http://localhost:8081/
 ```
-npm run dev && npm run serve
+npm run dev && npm run serve port=8081
 ```
 Serve a minified production build
 ```

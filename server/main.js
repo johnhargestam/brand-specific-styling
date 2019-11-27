@@ -3,7 +3,9 @@ const morgan = require('morgan');
 const fs = require('fs');
 
 const app = express();
-const SERVER_PORT = 8081;
+
+const args = process.argv.slice(2);
+const SERVER_PORT = args.length && /port=\d+/.test(args[0]) ? args[0].split('=')[1] : 8081;
 
 const manifest = JSON.parse(fs.readFileSync('build/manifest.json'));
 
