@@ -7,12 +7,12 @@ This is an approach using [extract-loader](https://github.com/peerigon/extract-l
 The server loads the manifest file and passes it as props to allow nested Vue components to resolve the correct style path. This is optional for a twig-heavy approach, since we already use the asset function in template files.
 
 ### Solves
-* Only loads the necessary styles neeeded for the used components and specified parameters (brand, domain, platform etc).
+* Only loads the necessary styles needed for the used components and specified parameters (brand, domain, platform etc).
 * The same webpack config can be used for a twig-only approach. Although if you *only* use twig, you should probably consider not using `webpack` at all. You can use `gulp` to transform and bundle your style files instead.
 * Using vue templates to load style on-demand is very handy for asynchronous/conditional vue components, but be advised to place at least some style in twig (like body-background) to make the loading phase less jarring for the user.
 
 ### Issues
-All style files need to be explicitely imported and uniquely named to avoid collision of resulting build files. I used `import ./{componentName}-{brand}.css`. There might be a way around this.
+All style files need to be explicitly imported and uniquely named to avoid collision of resulting build files. I used `import ./{componentName}-{brand}.css`. There might be a way around this.
 
 It is possible to dynamically import all needed combinations of style files for webpack, if you want to save some lines of code. Something like:
 
@@ -23,7 +23,7 @@ platforms.forEach(platform => {
   });
 });
 ```
-**However**, webpack will by design create meaningless chunks of roughly 1 kB for each resulting dynamic import, that all get loaded by the main script run by the client. Even if this could be prevented, a dynamic approch could add unnecessary complexity as soon as we want to exlude some combination of all the parameters.
+**However**, webpack will by design create meaningless chunks of roughly 1 kB for each resulting dynamic import, that all get loaded by the main script run by the client. Even if this could be prevented, a dynamic approach could add unnecessary complexity as soon as we want to exclude some combination of all the parameters.
 
 ## Try it out
 ```
@@ -54,7 +54,7 @@ use: [
   'css-loader',
 ],
 ```
-Webpack will traverse all entries and tranform all imported files identified by the regular expression with all above loaders in reverse order. The css files must be imported in scripts imported by the the entry files, or in the entry files themselves. 
+Webpack will traverse all entries and transform all imported files identified by the regular expression with all above loaders in reverse order. The css files must be imported in scripts imported by the entry files, or in the entry files themselves. 
 
 `css-loader` resolves all imports within the css files and `extract-loader` will convert them into strings. `file-loader` will then save them as css-files to webpack's output directory. I also used `postcss-loader` for minification, which is optional.
 
@@ -67,9 +67,9 @@ res.render('index.twig', {
   manifest,
 });
 ```
-*The actual code is obviously implementation-dependant. We can extend twig to access the entire asset manifest, or load the manifest in symfony.*
+*The actual code is obviously implementation-dependent. We can extend twig to access the entire asset manifest, or load the manifest in symfony.*
 
-We create a manifest json file with `webpack-assets-manifest`, and can load individual asset paths to dynamically create link tags. In order to pass several style paths to vue, I chose to load the manifest in the server and pass it as props in order to include link tags. Providing them all in an object is way more managable than providing them seperately.
+We create a manifest json file with `webpack-assets-manifest`, and can load individual asset paths to dynamically create link tags. In order to pass several style paths to vue, I chose to load the manifest in the server and pass it as props in order to include link tags. Providing them all in an object is way more manageable than providing them separately.
 
 **vue component**
 ```html
@@ -97,3 +97,5 @@ export default {
 </script>
 ```
 I chose to place style imports in the relevant component. I then resolve the correct public path using the assets (manifest) and brand props, and include the link tag in the template.
+
+**That's all you need!**
